@@ -1,0 +1,17 @@
+{
+    "name": "simonmongeau/modelix-guide",
+    "autoload": {
+        "psr-4": {
+            "Simonmongeau\\ModelixGuide\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Simon Mongeau",
+            "email": "simon@imagerie.ca"
+        }
+    ],
+    "require": {
+        "firebase/php-jwt": "^6.10"
+    }
+}
