@@ -13,8 +13,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
 require_once get_stylesheet_directory() . '/vendor/autoload.php';
 include('parts/clean.php');
 
+// make sure ACF Pro is loaded force activate if
+// the plugin is not already activated
 
-
+if (!class_exists('acf')) {
+    if (! function_exists('activate_plugin')) {
+        require_once ABSPATH . 'wp-admin/includes/plugin.php';
+    }
+    activate_plugin('advanced-custom-fields-pro/acf.php');
+    header('Location: ' . $_SERVER['REQUEST_URI']);
+    die();
+}
 
 
 // add custom post type
@@ -55,6 +64,95 @@ add_action('acf/include_fields', function () {
     if (!function_exists('acf_add_local_field_group')) {
         return;
     }
+    acf_add_options_page([
+        'page_title' => 'Options',
+        'menu_title' => 'Options',
+        'menu_slug' => 'options',
+        'capability' => 'edit_posts',
+        'parent_slug' => 'nestedpages-guide',
+        'redirect' => false,
+    ]);
+
+    acf_add_local_field_group(array(
+        'key' => 'group_66fd6b8b23a13',
+        'title' => 'Guide',
+        'fields' => array(
+            array(
+                'key' => 'field_66fd6b8be660d',
+                'label' => 'Accueil (fr)',
+                'name' => 'accueil_fr',
+                'aria-label' => '',
+                'type' => 'post_object',
+                'instructions' => '',
+                'required' => 0,
+                'conditional_logic' => 0,
+                'wrapper' => array(
+                    'width' => '',
+                    'class' => '',
+                    'id' => '',
+                ),
+                'post_type' => array(
+                    0 => 'guide',
+                ),
+                'post_status' => '',
+                'taxonomy' => '',
+                'return_format' => 'id',
+                'multiple' => 0,
+                'allow_null' => 0,
+                'allow_in_bindings' => 0,
+                'bidirectional' => 0,
+                'ui' => 1,
+                'bidirectional_target' => array(),
+            ),
+            array(
+                'key' => 'field_66fd6bc5e660e',
+                'label' => 'Accueil (en)',
+                'name' => 'accueil_en',
+                'aria-label' => '',
+                'type' => 'post_object',
+                'instructions' => '',
+                'required' => 0,
+                'conditional_logic' => 0,
+                'wrapper' => array(
+                    'width' => '',
+                    'class' => '',
+                    'id' => '',
+                ),
+                'post_type' => array(
+                    0 => 'guide',
+                ),
+                'post_status' => '',
+                'taxonomy' => '',
+                'return_format' => 'id',
+                'multiple' => 0,
+                'allow_null' => 0,
+                'allow_in_bindings' => 0,
+                'bidirectional' => 0,
+                'ui' => 1,
+                'bidirectional_target' => array(),
+            ),
+        ),
+        'location' => array(
+            array(
+                array(
+                    'param' => 'options_page',
+                    'operator' => '==',
+                    'value' => 'options',
+                ),
+            ),
+        ),
+        'menu_order' => 0,
+        'position' => 'normal',
+        'style' => 'default',
+        'label_placement' => 'top',
+        'instruction_placement' => 'label',
+        'hide_on_screen' => '',
+        'active' => true,
+        'description' => '',
+        'show_in_rest' => 0,
+    ));
+
+
 
     acf_add_local_field_group(array(
         'key' => 'group_667b309dbba28',
