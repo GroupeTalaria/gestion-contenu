@@ -12,11 +12,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
 // composer autoload
 require_once get_stylesheet_directory() . '/vendor/autoload.php';
 include('parts/clean.php');
-
 // make sure ACF Pro is loaded force activate if
 // the plugin is not already activated
 
+
 if (!class_exists('acf')) {
+    // do not do that on POST request
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        return;
+    }
+
     if (! function_exists('activate_plugin')) {
         require_once ABSPATH . 'wp-admin/includes/plugin.php';
     }
@@ -24,6 +29,7 @@ if (!class_exists('acf')) {
     header('Location: ' . $_SERVER['REQUEST_URI']);
     die();
 }
+
 
 
 // add custom post type
@@ -240,6 +246,7 @@ add_action('acf/include_fields', function () {
 
 
 
+
 add_filter(
     'rest_authentication_errors',
     function ($access) {
@@ -249,7 +256,6 @@ add_filter(
         //  return new WP_Error('rest_disabled', __('The WordPress REST API has been disabled.'), array('status' => rest_authorization_required_code()));
     }
 );
-
 
 
 function cleanHtml($raw)
