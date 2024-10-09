@@ -267,7 +267,7 @@ function cleanHtml($raw)
     return $dom->saveHTML();
 }
 remove_action('wp_head', 'rest_output_link_wp_head', 10);
-remove_action('template_redirect', 'rest_output_link_header', 11);
+//remove_action('template_redirect', 'rest_output_link_header', 11);
 
 add_action('init', function ($value) {
 
