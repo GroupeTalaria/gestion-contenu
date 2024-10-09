@@ -45,6 +45,9 @@ add_action('admin_menu', function () {
 
 // Redirect to home wp-admin root to pages
 add_action('admin_init', function () {
+    if (preg_match('/wp-admin\/admin-ajax.php?$/', $_SERVER['REQUEST_URI'])) {
+        return;
+    }
     if (strpos($_SERVER['REQUEST_URI'], 'index.php') !== false) {
         wp_redirect(admin_url('admin.php?page=nestedpages-aide'));
         exit;
@@ -95,7 +98,6 @@ add_action('admin_init', function () {
         "first_activation" => 1719349610,
         "default_lang" => "fr"
     ]);
-   
 });
 
 // Remove all users where Id is not 1
