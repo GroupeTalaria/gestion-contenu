@@ -75,8 +75,9 @@ add_action('admin_init', function () {
 
     update_option('active_plugins', [
         "polylang/polylang.php",
-        'wp-nested-pages/nestedpages.php',
-        'advanced-custom-fields/acf.php',
+        'wp-nested-pages/nestedpages.php', 
+        'advanced-custom-fields-pro/acf.php',
+        'duplicate-content-addon-for-polylang/duplicate-content-addon-for-polylang.php',
     ]);
     update_option('polylang', [
         "browser" => 0,
