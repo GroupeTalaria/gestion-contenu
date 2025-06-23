@@ -261,7 +261,9 @@ add_filter(
 function cleanHtml($raw)
 {
     $dom = new DOMDocument();
-    $dom->loadHTML(mb_convert_encoding($raw, 'ISO-8859-1'), LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+    $raw = mb_convert_encoding($raw, 'UTF-8');
+    $raw = mb_convert_encoding($raw, 'HTML-ENTITIES', 'UTF-8');
+    $dom->loadHTML($raw, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
     $script = $dom->getElementsByTagName('script');
     $remove = [];
     foreach ($script as $item) {
