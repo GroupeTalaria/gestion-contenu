@@ -91,6 +91,7 @@ add_action('admin_init', function () {
         "post_types" => [
             "guide",
             "aide",
+            "aideKPI",
             "nouvelles"
         ],
         "taxonomies" => [],
