@@ -56,7 +56,7 @@ add_action('init', function () {
     ]);
 
 
-    register_post_type('aideKPI', [
+    register_post_type('aide_kpi', [
         'public' => true,
         'label' => "Bulle d'aide dashboard KPI",
         'supports' => ['title', 'editor', 'revisions'],
@@ -228,7 +228,7 @@ add_action('acf/include_fields', function () {
             array(
                 'key' => 'field_667b309d9c9f4kp1',
                 'label' => 'Bulle d\'aide dashboard KPI',
-                'name' => 'aideKPI',
+                'name' => 'aide_kpi',
                 'type' => 'select',
                 'choices' => json_decode(file_get_contents(get_stylesheet_directory() . '/elements.json'), true),
                 'allow_null' => true,
@@ -259,7 +259,7 @@ add_action('acf/include_fields', function () {
                 array(
                     'param' => 'post_type',
                     'operator' => '==',
-                    'value' => 'aideKPI',
+                    'value' => 'aide_kpi',
                 ),
             ),
         ),

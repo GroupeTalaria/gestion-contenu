@@ -8,7 +8,7 @@ if (function_exists('pll_languages_list')) {
 }
 foreach ($lang as $key => $value) {
     $posts_perlang = get_posts([
-        "post_type" => "aideKPI",
+        "post_type" => "aide_kpi",
         'lang' => $value,
         "posts_per_page" => -1,
     ]);
@@ -18,7 +18,7 @@ foreach ($lang as $key => $value) {
         'posts' => array_map(function ($post) {
             return [
                 'title' => $post->post_title,
-                'key' => get_field('aideKPI', $post->ID),
+                'key' => get_field('aide_kpi', $post->ID),
                 'types' => get_field('types', $post->ID) ?: [],
                 'url' => get_permalink($post->ID),
             ];
