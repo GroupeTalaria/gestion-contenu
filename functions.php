@@ -55,6 +55,7 @@ add_action('init', function () {
         'has_archive' => true,
     ]);
 
+
     register_post_type('aideKPI', [
         'public' => true,
         'label' => "Bulle d'aide dashboard KPI",
@@ -220,6 +221,7 @@ add_action('acf/include_fields', function () {
     ));
 
     acf_add_local_field_group(array(
+
         'key' => 'group_667b309dbba28kp1',
         'title' => 'Bulle d\'aide dashboard KPI',
         'fields' => array(
@@ -273,6 +275,7 @@ add_action('acf/include_fields', function () {
     ));
 
     acf_add_local_field_group(array(
+
         'key' => 'group_667c56ad41c3d',
         'title' => 'Nouvelles',
         'fields' => array(
