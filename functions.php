@@ -54,17 +54,6 @@ add_action('init', function () {
         'show_in_rest' => true,
         'has_archive' => true,
     ]);
-
-    register_post_type('aideKPI', [
-        'public' => true,
-        'label' => "Bulle d'aide dashboard KPI",
-        'supports' => ['title', 'editor', 'revisions'],
-        'show_in_menu' => true,
-        'menu_position' => 6,
-        'show_in_rest' => true,
-        'has_archive' => true,
-    ]);
-
     register_post_type('nouvelles', [
         'public' => true,
         'label' => "Nouvelles",
@@ -205,59 +194,6 @@ add_action('acf/include_fields', function () {
                     'param' => 'post_type',
                     'operator' => '==',
                     'value' => 'aide',
-                ),
-            ),
-        ),
-        'menu_order' => 0,
-        'position' => 'normal',
-        'style' => 'seamless',
-        'label_placement' => 'left',
-        'instruction_placement' => 'label',
-        'hide_on_screen' => '',
-        'active' => true,
-        'description' => '',
-        'show_in_rest' => 0,
-    ));
-
-    acf_add_local_field_group(array(
-        'key' => 'group_667b309dbba28',
-        'title' => 'Bulle d\'aide dashboard KPI',
-        'fields' => array(
-            array(
-                'key' => 'field_667b309d9c9f4',
-                'label' => 'Bulle d\'aide dashboard KPI',
-                'name' => 'aideKPI',
-                'type' => 'select',
-                'choices' => json_decode(file_get_contents(get_stylesheet_directory() . '/elements.json'), true),
-                'allow_null' => true,
-            ),
-            array(
-                'key' => 'field_667b309d9c9sdf',
-                'label' => 'Type d\'orthèses',
-                'name' => 'type',
-                'type' => 'checkbox',
-                'choices' => [
-                    "KPI Lead-time moyen" => "Temps moyen de traitement",
-                    "KPI Ratio fill Rate On Time" => "Taux de complétion dans les délais",
-                    "KPI Rejection Rate" => "Taux de rejet",
-                    "KPI Design Ratio" => "Ratio de conception",
-                    "KPI Printing Capacity Ratio" => "Ratio de capacité d'impression",
-                    "KPI 3D Printer Uptime Ratio" => "Ratio de disponibilité des imprimantes 3D",
-                    "KPI Finishing Ratio" => "Ratio de finitions",
-                    "KPI Quality Ratio" => "Ratio de qualité",
-                    "KPI SST" => "SST",
-                    "KPI Average Revenue" => "Revenu moyen",
-                    "KPI Operating Cycle" => "Cycle d'exploitation",
-                ],
-                'allow_null' => true,
-            ),
-        ),
-        'location' => array(
-            array(
-                array(
-                    'param' => 'post_type',
-                    'operator' => '==',
-                    'value' => 'aideKPI',
                 ),
             ),
         ),
