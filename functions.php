@@ -60,7 +60,7 @@ add_action('init', function () {
         'label' => "Bulle d'aide dashboard KPI",
         'supports' => ['title', 'editor', 'revisions'],
         'show_in_menu' => true,
-        'menu_position' => 6,
+        'menu_position' => 7,
         'show_in_rest' => true,
         'has_archive' => true,
     ]);
@@ -220,11 +220,11 @@ add_action('acf/include_fields', function () {
     ));
 
     acf_add_local_field_group(array(
-        'key' => 'group_667b309dbba28',
+        'key' => 'group_667b309dbba28kp1',
         'title' => 'Bulle d\'aide dashboard KPI',
         'fields' => array(
             array(
-                'key' => 'field_667b309d9c9f4',
+                'key' => 'field_667b309d9c9f4kp1',
                 'label' => 'Bulle d\'aide dashboard KPI',
                 'name' => 'aideKPI',
                 'type' => 'select',
@@ -232,7 +232,7 @@ add_action('acf/include_fields', function () {
                 'allow_null' => true,
             ),
             array(
-                'key' => 'field_667b309d9c9sdf',
+                'key' => 'field_667b309d9c9sdfkp1',
                 'label' => 'Type d\'orthèses',
                 'name' => 'type',
                 'type' => 'checkbox',
