@@ -19,7 +19,7 @@ foreach ($lang as $key => $value) {
             return [
                 'title' => $post->post_title,
                 'key' => get_field('aide_kpi', $post->ID),
-                'types' => get_field('types', $post->ID) ?: [],
+                'types' => get_field('type', $post->ID) ?: [],
                 'url' => get_permalink($post->ID),
             ];
         }, $posts_perlang),
