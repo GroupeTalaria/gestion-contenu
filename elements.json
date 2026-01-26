@@ -31,5 +31,7 @@
   "taillage.cupuleTrouee": "Cupule trouée",
   "taillage.biseau": "Biseau calcanéen",
   "boutique.enCommande": "Boutique - Éléments en commande",
-  "dashboard.KPI": "Dashboard - KPI"
+  "dashboard.KPI": "Dashboard - KPI",
+  "recouvrements.Dessus": "Recouvrement dessus",
+  "recouvrements.Dessous": "Recouvrement dessous",
 }
