@@ -63,6 +63,39 @@ add_action('init', function () {
         'show_in_rest' => true,
         'has_archive' => true,
     ]);
+    register_post_type('conseils_rapides', [
+        'public' => true,
+        'label' => 'Conseils rapides (Skeltec+)',
+        'labels' => [
+            'singular_name' => 'Conseil rapide',
+            'add_new_item' => 'Ajouter un conseil rapide',
+            'edit_item' => 'Modifier le conseil rapide',
+        ],
+        'supports' => ['title', 'revisions', 'page-attributes'],
+        'show_in_menu' => true,
+        'menu_position' => 7,
+        'menu_icon' => 'dashicons-lightbulb',
+        'show_in_rest' => true,
+        'has_archive' => true,
+    ]);
+});
+
+// trier les conseils rapides par ordre (menu_order) dans l'admin et le front
+add_action('pre_get_posts', function ($query) {
+    if ($query->get('post_type') !== 'conseils_rapides' || $query->get('orderby')) {
+        return;
+    }
+    $query->set('orderby', ['menu_order' => 'ASC', 'title' => 'ASC']);
+});
+
+// pas de page individuelle pour les conseils rapides, seulement l'archive JSON
+add_action('template_redirect', function () {
+    if (is_singular('conseils_rapides')) {
+        global $wp_query;
+        $wp_query->set_404();
+        status_header(404);
+        nocache_headers();
+    }
 });
 
 
@@ -240,6 +273,39 @@ add_action('acf/include_fields', function () {
         'active' => true,
         'description' => '',
         'show_in_rest' => 0,
+    ));
+
+    acf_add_local_field_group(array(
+        'key' => 'group_6710a1c2e3f41',
+        'title' => 'Conseil rapide',
+        'fields' => array(
+            array(
+                'key' => 'field_6710a1c2f1a52',
+                'label' => 'Texte',
+                'name' => 'texte',
+                'type' => 'textarea',
+                'rows' => 6,
+                'new_lines' => '',
+            ),
+        ),
+        'location' => array(
+            array(
+                array(
+                    'param' => 'post_type',
+                    'operator' => '==',
+                    'value' => 'conseils_rapides',
+                ),
+            ),
+        ),
+        'menu_order' => 0,
+        'position' => 'acf_after_title',
+        'style' => 'seamless',
+        'label_placement' => 'top',
+        'instruction_placement' => 'label',
+        'hide_on_screen' => '',
+        'active' => true,
+        'description' => '',
+        'show_in_rest' => 1,
     ));
 });
 

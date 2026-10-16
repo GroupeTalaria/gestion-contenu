@@ -13,7 +13,9 @@ $jwt = substr($auth, 7);
 $key = JWT_SECRET;
 
 try {
-    $payload = JWT::decode($jwt, new Key($key, 'HS256'));
+   // $payload = JWT::decode($jwt, new Key($key, 'HS256'));
+
+    
 } catch (\Exception $e) {
     header('Content-Type: application/json');
     header('Access-Control-Allow-Origin: *');
