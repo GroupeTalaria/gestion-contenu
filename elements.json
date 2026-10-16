@@ -25,8 +25,16 @@
   "taillage.buteeDistale": "Butée Distale",
   "taillage.exclusion": "Exclusions",
   "taillage.accommodationNaviculaire": "Accomodation naviculaire",
+  "degagement.degagementMedial": "Dégagement médial",
+  "degagement.degagementLateral": "Dégagement latéral",
   "taillage.canal": "Canal fascia",
   "taillage.cupuleTrouee": "Cupule trouée",
   "taillage.biseau": "Biseau calcanéen",
-  "boutique.enCommande": "Boutique - Éléments en commande"
+  "boutique.enCommande": "Boutique - Éléments en commande",
+  "dashboard.KPI": "Dashboard - KPI",
+  "recouvrements.Dessus": "Recouvrement dessus",
+  "recouvrements.Dessous": "Recouvrement dessous",
+  "coinArrondi": "Coins arrondi",
+  "antiDerapant3d": "Anti-derapants 3D",
+  "pointure": "Pointures"
 }
