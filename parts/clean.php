@@ -92,7 +92,8 @@ add_action('admin_init', function () {
             "guide",
             "aide",
             "aide_kpi",
-            "nouvelles"
+            "nouvelles",
+            "conseils_rapides"
         ],
         "taxonomies" => [],
         "domains" => [],
