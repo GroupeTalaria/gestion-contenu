@@ -417,3 +417,24 @@ add_action('init', function ($value) {
 
     return $value;
 });
+
+/**
+ * Allow Modulix to display wp-admin inside an iframe (/contenu page).
+ * frame-ancestors overrides X-Frame-Options in modern browsers,
+ * so the nginx SAMEORIGIN header no longer blocks.
+ */
+function modelix_guide_frame_ancestors() {
+    if (!headers_sent()) {
+        header("Content-Security-Policy: frame-ancestors 'self' https://*.skeltec.ca https://localhost:5602");
+    }
+}
+
+// The admin_init hook is added after functions.php loads: remove it at runtime.
+add_action('admin_init', function () {
+    remove_action('admin_init', 'send_frame_options_header', 10);
+}, 1);
+remove_action('login_init', 'send_frame_options_header', 10);
+
+add_action('send_headers', 'modelix_guide_frame_ancestors'); // front (/?key=)
+add_action('admin_init', 'modelix_guide_frame_ancestors');
+add_action('login_init', 'modelix_guide_frame_ancestors');
