@@ -83,7 +83,7 @@ add_action('init', function () {
             'add_new_item' => 'Ajouter un conseil rapide',
             'edit_item' => 'Modifier le conseil rapide',
         ],
-        'supports' => ['title', 'revisions', 'page-attributes'],
+        'supports' => ['title', 'editor', 'revisions', 'page-attributes'],
         'show_in_menu' => true,
         'menu_position' => 7,
         'menu_icon' => 'dashicons-lightbulb',
@@ -99,6 +99,11 @@ add_action('pre_get_posts', function ($query) {
     }
     $query->set('orderby', ['menu_order' => 'ASC', 'title' => 'ASC']);
 });
+
+// éditeur de blocs (Gutenberg) pour les conseils rapides
+add_filter('use_block_editor_for_post_type', function ($use, $post_type) {
+    return $post_type === 'conseils_rapides' ? true : $use;
+}, 100, 2);
 
 // pas de page individuelle pour les conseils rapides, seulement l'archive JSON
 add_action('template_redirect', function () {
@@ -340,39 +345,6 @@ add_action('acf/include_fields', function () {
         'active' => true,
         'description' => '',
         'show_in_rest' => 0,
-    ));
-
-    acf_add_local_field_group(array(
-        'key' => 'group_6710a1c2e3f41',
-        'title' => 'Conseil rapide',
-        'fields' => array(
-            array(
-                'key' => 'field_6710a1c2f1a52',
-                'label' => 'Texte',
-                'name' => 'texte',
-                'type' => 'textarea',
-                'rows' => 6,
-                'new_lines' => '',
-            ),
-        ),
-        'location' => array(
-            array(
-                array(
-                    'param' => 'post_type',
-                    'operator' => '==',
-                    'value' => 'conseils_rapides',
-                ),
-            ),
-        ),
-        'menu_order' => 0,
-        'position' => 'acf_after_title',
-        'style' => 'seamless',
-        'label_placement' => 'top',
-        'instruction_placement' => 'label',
-        'hide_on_screen' => '',
-        'active' => true,
-        'description' => '',
-        'show_in_rest' => 1,
     ));
 });
 

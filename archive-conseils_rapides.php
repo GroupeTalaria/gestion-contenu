@@ -21,7 +21,7 @@ foreach ($lang as $key => $value) {
                 "id" => $post->ID,
                 "ordre" => $post->menu_order,
                 "titre" => $post->post_title,
-                "texte" => get_field("texte", $post->ID) ?: "",
+                "texte" => ($texte = apply_filters('the_content', $post->post_content)) ? cleanHtml($texte) : "",
             ];
         }, $posts_perlang),
     ];
